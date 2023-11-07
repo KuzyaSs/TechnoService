@@ -1,0 +1,48 @@
+﻿<Page x:Class="TechnoService.Presentation.Pages.SignInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TechnoService.Presentation.Pages"
+      mc:Ignorable="d" 
+      Height="450" Width="300"
+      Title="Окно авторизации"
+      Background="White">
+    <StackPanel
+        Margin="24"
+        VerticalAlignment="Center">
+        <TextBlock
+            Style="{StaticResource TextBlockHeader}"
+            Text="Авторизация"
+            TextAlignment="Center"
+            Margin="0 0 0 48" />
+
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Логин"
+            Margin="0 0 0 8" />
+        
+        <TextBox
+            Name="textBoxLogin"
+            Style="{StaticResource TextBoxDefault}"
+            Margin="0 0 0 16" />
+
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Пароль"
+            Margin="0 0 0 8" />
+        
+        <PasswordBox
+            Name="passwordBoxPassword"
+            Style="{StaticResource PasswordBoxDefault}"
+            Margin="0 0 0 36" />
+
+        <Button
+            Name="buttonSignIn"
+            Style="{StaticResource ButtonDefault}"
+            Content="Войти"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Click="SignIn" />
+    </StackPanel>
+</Page>

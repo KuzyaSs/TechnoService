@@ -1,0 +1,215 @@
+﻿<Page x:Class="TechnoService.Presentation.Pages.RequestDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TechnoService.Presentation.Pages"
+      mc:Ignorable="d" 
+      Height="Auto" Width="Auto"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Окно заявки"
+      Background="White">
+
+    <Grid
+        Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Name="textBlockTitle"
+            Style="{StaticResource TextBlockHeader}"
+            Text="Заявка #1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" />
+
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Left">
+            <TextBlock
+                Style="{StaticResource TextBlockDefault}"
+                Text="Оборудование"
+                Margin="0 0 0 8" />
+
+            <ComboBox
+                Name="comboBoxEquipment"
+                Style="{StaticResource ComboBoxDefault}"
+                Width="Auto">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Left">
+            <TextBlock
+                Style="{StaticResource TextBlockDefault}"
+                Text="Тип неисправности"
+                Margin="0 0 0 8" />
+
+            <ComboBox
+                Name="comboBoxFaultType"
+                Style="{StaticResource ComboBoxDefault}"
+                Width="Auto">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <Grid
+            Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="0 0 8 0">
+                <TextBlock
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Статус"
+                    Margin="0 0 0 8" />
+
+                <ComboBox
+                    Name="comboBoxStatus"
+                    Style="{StaticResource ComboBoxDefault}"
+                    Width="Auto">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="8 0 0 0" >
+                <TextBlock
+                    Name="textBlockContractor"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Исполнитель"
+                    Margin="0 0 0 8" />
+
+                <ComboBox
+                    Name="comboBoxContractor"
+                    Style="{StaticResource ComboBoxDefault}"
+                    Width="Auto">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Login}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid
+            Grid.Row="4"
+            Margin="0 0 0 16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid
+                Grid.Column="0"
+                Margin="0 0 8 0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock
+                    Grid.Row="0"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Описание проблемы"
+                    Margin="0 0 0 8" />
+
+                <TextBox
+                    Grid.Row="1"
+                    Name="textBoxDescription"
+                    Style="{StaticResource TextBoxFill}" />
+            </Grid>
+
+            <Grid
+                Grid.Column="1"
+                Margin="8 0 0 0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock
+                    Grid.Row="0"
+                    Name="textBlockComment"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Комментарий"
+                    Margin="0 0 0 8" />
+
+                <TextBox
+                    Grid.Row="1"
+                    Name="textBoxComment"
+                    Style="{StaticResource TextBoxFill}" />
+            </Grid>
+        </Grid>
+
+        <Grid
+            Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Column="0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left">
+                <TextBlock
+                    Name="textBlockClient"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Клиент:"
+                    Margin="0 0 0 8" />
+
+                <TextBlock
+                    Name="textBlockPublicationDate"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Дата добавления:" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right">
+                <Button
+                    Name="buttonBack"
+                    Style="{StaticResource ButtonDefault}"
+                    Content="Назад"
+                    Click="Back"
+                    Margin="0 0 16 0" />
+
+                <Button
+                    Name="buttonSave"
+                    Style="{StaticResource ButtonDefault}"
+                    Content="Сохранить изменения"
+                    Click="Save" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

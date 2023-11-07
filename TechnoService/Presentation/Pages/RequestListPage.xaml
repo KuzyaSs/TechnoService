@@ -1,0 +1,154 @@
+﻿<Page x:Class="TechnoService.Presentation.Pages.RequestListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TechnoService.Presentation.Pages"
+      mc:Ignorable="d" 
+      Height="Auto" Width="Auto"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Окно списка заявок"
+      Background="White">
+
+    <Grid
+        Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Name="textBlockTitle"
+                Style="{StaticResource TextBlockHeader}"
+                Text="Мои заявки"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" />
+
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right">
+                <TextBlock
+                    Name="textBlockLogin"
+                    Style="{StaticResource TextBlockDefault}"
+                    VerticalAlignment="Center"
+                    Text="Логин"
+                    Margin="0 0 16 0"/>
+                <Button
+                    Name="buttonExit"
+                    Style="{StaticResource ButtonDefault}"
+                    Content="Выход"
+                    Click="SignOut"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Left">
+            <TextBlock
+                Style="{StaticResource TextBlockDefault}"
+                Text="Поиск"
+                Margin="0 0 0 8" />
+
+            <TextBox
+                Name="textBoxSearch"
+                Style="{StaticResource TextBoxDefault}"
+                Width="250"
+                TextChanged="SearchRequests"/>
+        </StackPanel>
+
+        <TextBlock
+            Name="textBlockNotFound"
+            Grid.Row="2"
+            Style="{StaticResource TextBlockDefault}"
+            Text="Заявки отсутствуют"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Panel.ZIndex="1" />
+
+        <DataGrid
+            Grid.Row="2"
+            x:Name="dataGridRequestList"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderDefault}"
+            RowStyle="{StaticResource DataGridRowDefault}"
+            IsReadOnly="True"
+            AutoGenerateColumns="False"
+            CanUserReorderColumns="False"
+            SelectionMode="Single"
+            Background="White"
+            BorderThickness="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Номер заявки"
+                    Binding="{Binding Id}"
+                    ElementStyle="{StaticResource TextBlockWrap}"
+                    CanUserResize="False"
+                    Width="Auto" />
+
+                <DataGridTextColumn
+                    Header="Оборудование"
+                    Binding="{Binding Equipment.Name}"
+                    ElementStyle="{StaticResource TextBlockWrap}"
+                    Width="*" />
+
+                <DataGridTextColumn
+                    Header="Тип неисправности"
+                    Binding="{Binding FaultType.Name}"
+                    ElementStyle="{StaticResource TextBlockWrap}"
+                    Width="*" />
+                
+                <DataGridTextColumn
+                    Header="Статус"
+                    Binding="{Binding Status.Name}"
+                    ElementStyle="{StaticResource TextBlockWrap}"
+                    Width="*" />
+                
+                <DataGridTextColumn
+                    Header="Дата добавления"
+                    Binding="{Binding PublicationDate}"
+                    ElementStyle="{StaticResource TextBlockWrap}"
+                    CanUserResize="False"
+                    Width="*" />
+                
+                <DataGridTemplateColumn
+                    Header="Подробнее"
+                    CanUserResize="False"
+                    CanUserSort="False"
+                    Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Style="{StaticResource ButtonDefault}"
+                                Content=">"
+                                Click="NavigateToRequestDetailPage"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+            <Button
+                Name="buttonCreateRequest"
+                Style="{StaticResource ButtonDefault}"
+                Content="Создать заявку"
+                Click="NavigateToCreateRequestPage"
+                Margin="0 16 0 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
