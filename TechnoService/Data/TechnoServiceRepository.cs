@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 
 namespace TechnoService.Data
@@ -198,6 +199,27 @@ namespace TechnoService.Data
                 return status;
             }
             throw new Exception($"Статус с идентификатором {statusId} не найден!");
+        }
+
+        public int GetNumOfReadyRequests()
+        {
+            int NumOfReadyRequests = technoServiceEntities.Requests.Count(_request => _request.Status.Name == "Выполнено");
+            return NumOfReadyRequests;
+        }
+
+        public double GetAvgCompletionTime()
+        {
+            double? avgCompletionTime = technoServiceEntities.Requests.Average(_request =>
+            SqlFunctions.DateDiff("HOUR", _request.PublicationDate, _request.EndDate)
+            );
+            if (avgCompletionTime != null)
+            {
+                return (double)avgCompletionTime;
+            }
+            else
+            {
+                return -1.0;
+            }
         }
     }
 }

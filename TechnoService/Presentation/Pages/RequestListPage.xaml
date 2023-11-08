@@ -138,17 +138,37 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel
-            Grid.Row="3"
-            Orientation="Horizontal"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
+        <Grid
+            Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel
+                Grid.Column="0"
+                Orientation="Vertical"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left">
+                <TextBlock
+                    Name="textBlockNumOfReadyRequests"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Количество выполненных заявок:"
+                    Margin="0 0 0 8" />
+                
+                <TextBlock
+                    Name="textBlockAvgCompletionTime"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Среднее время выполнения заявок (часы):" />
+            </StackPanel>
+            
             <Button
+                Grid.Column="1"
                 Name="buttonCreateRequest"
                 Style="{StaticResource ButtonDefault}"
                 Content="Создать заявку"
                 Click="NavigateToCreateRequestPage"
                 Margin="0 16 0 0"/>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

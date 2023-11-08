@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using TechnoService.Data;
 
 namespace TechnoService.Presentation.Pages
@@ -31,10 +32,35 @@ namespace TechnoService.Presentation.Pages
 
         private void SetUpUI()
         {
-            if (currentUser.Role.Name == "Менеджер" || currentUser.Role.Name == "Исполнитель")
+            switch(currentUser.Role.Name)
             {
-                textBlockTitle.Text = "Заявки";
-                buttonCreateRequest.Visibility = Visibility.Collapsed;
+                case "Клиент":
+                    textBlockNumOfReadyRequests.Visibility = Visibility.Collapsed;
+                    textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
+                    break;
+
+                case "Менеджер":
+                    textBlockTitle.Text = "Заявки";
+                    buttonCreateRequest.Visibility = Visibility.Collapsed;
+                    int numOfReadyRequests = technoServiceRepository.GetNumOfReadyRequests();
+                    textBlockNumOfReadyRequests.Text = $"Количество выполненных заявок: {numOfReadyRequests}";
+                    double avgCompletionTime = technoServiceRepository.GetAvgCompletionTime();
+                    if (avgCompletionTime >= 0)
+                    {
+                        textBlockAvgCompletionTime.Text = $"Среднее время выполнения заявок (часы): {avgCompletionTime}";
+                    }
+                    else
+                    {
+                        textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
+                    }
+                    break;
+
+                case "Исполнитель":
+                    textBlockTitle.Text = "Заявки";
+                    buttonCreateRequest.Visibility = Visibility.Collapsed;
+                    textBlockNumOfReadyRequests.Visibility = Visibility.Collapsed;
+                    textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
+                    break;
             }
             textBlockLogin.Text = currentUser.Login;
 
