@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.Linq;
+using TechnoService.Model;
 
 namespace TechnoService.Data
 {
@@ -220,6 +221,23 @@ namespace TechnoService.Data
             {
                 return -1.0;
             }
+        }
+
+        public List<FaultTypeStatistics> GetFaultTypeStatistics()
+        {
+            List<FaultTypeStatistics> faultTypeStatisticsList = new List<FaultTypeStatistics>();
+
+            var pairs = technoServiceEntities.Requests.GroupBy(_request => _request.FaultType);
+            foreach(var pair in pairs)
+            {
+                FaultTypeStatistics faultTypeStatistics = new FaultTypeStatistics {
+                    FaultType = pair.Key,
+                    Quantity = pair.Count()
+                };
+                faultTypeStatisticsList.Add(faultTypeStatistics);
+            }
+
+            return faultTypeStatisticsList;
         }
     }
 }

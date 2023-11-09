@@ -84,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Presentation\Pages\StatisticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\TechnoServiceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +130,7 @@
     <Compile Include="Data\User.cs">
       <DependentUpon>TechnoServiceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FaultTypeStatistics.cs" />
     <Compile Include="Presentation\Pages\CreateRequestPage.xaml.cs">
       <DependentUpon>CreateRequestPage.xaml</DependentUpon>
     </Compile>
@@ -140,6 +145,9 @@
     </Compile>
     <Compile Include="Presentation\Pages\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Pages\StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\TechnoServiceWindow.xaml.cs">
       <DependentUpon>TechnoServiceWindow.xaml</DependentUpon>
@@ -198,5 +206,6 @@
       <LastGenOutput>TechnoServiceModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

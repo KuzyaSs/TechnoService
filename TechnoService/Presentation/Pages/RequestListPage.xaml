@@ -78,8 +78,8 @@
             Panel.ZIndex="1" />
 
         <DataGrid
-            Grid.Row="2"
             x:Name="dataGridRequestList"
+            Grid.Row="2"
             ColumnHeaderStyle="{StaticResource DataGridColumnHeaderDefault}"
             RowStyle="{StaticResource DataGridRowDefault}"
             IsReadOnly="True"
@@ -107,20 +107,20 @@
                     Binding="{Binding FaultType.Name}"
                     ElementStyle="{StaticResource TextBlockWrap}"
                     Width="*" />
-                
+
                 <DataGridTextColumn
                     Header="Статус"
                     Binding="{Binding Status.Name}"
                     ElementStyle="{StaticResource TextBlockWrap}"
                     Width="*" />
-                
+
                 <DataGridTextColumn
                     Header="Дата добавления"
                     Binding="{Binding PublicationDate}"
                     ElementStyle="{StaticResource TextBlockWrap}"
                     CanUserResize="False"
                     Width="*" />
-                
+
                 <DataGridTemplateColumn
                     Header="Подробнее"
                     CanUserResize="False"
@@ -138,37 +138,23 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid
-            Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            
-            <StackPanel
-                Grid.Column="0"
-                Orientation="Vertical"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Left">
-                <TextBlock
-                    Name="textBlockNumOfReadyRequests"
-                    Style="{StaticResource TextBlockDefault}"
-                    Text="Количество выполненных заявок:"
-                    Margin="0 0 0 8" />
-                
-                <TextBlock
-                    Name="textBlockAvgCompletionTime"
-                    Style="{StaticResource TextBlockDefault}"
-                    Text="Среднее время выполнения заявок (часы):" />
-            </StackPanel>
-            
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right">
             <Button
-                Grid.Column="1"
-                Name="buttonCreateRequest"
+                Name="buttonNavigateToStatistics"
+                Style="{StaticResource ButtonDefault}"
+                Content="Статистика"
+                Click="NavigateToStatistics"
+                Margin="0 16 16 0" />
+
+            <Button
+                Name="buttonNavigateToCreateRequestPage"
                 Style="{StaticResource ButtonDefault}"
                 Content="Создать заявку"
                 Click="NavigateToCreateRequestPage"
-                Margin="0 16 0 0"/>
-        </Grid>
+                Margin="0 16 0 0" />
+        </StackPanel>
     </Grid>
 </Page>

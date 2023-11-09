@@ -61,6 +61,7 @@
 
         <Style TargetType="DataGridColumnHeader" x:Key="DataGridColumnHeaderDefault">
             <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="Century Gothic" />
         </Style>
 

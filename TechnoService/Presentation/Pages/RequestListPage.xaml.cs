@@ -35,31 +35,18 @@ namespace TechnoService.Presentation.Pages
             switch(currentUser.Role.Name)
             {
                 case "Клиент":
-                    textBlockNumOfReadyRequests.Visibility = Visibility.Collapsed;
-                    textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
+                    buttonNavigateToStatistics.Visibility = Visibility.Collapsed;
                     break;
 
                 case "Менеджер":
                     textBlockTitle.Text = "Заявки";
-                    buttonCreateRequest.Visibility = Visibility.Collapsed;
-                    int numOfReadyRequests = technoServiceRepository.GetNumOfReadyRequests();
-                    textBlockNumOfReadyRequests.Text = $"Количество выполненных заявок: {numOfReadyRequests}";
-                    double avgCompletionTime = technoServiceRepository.GetAvgCompletionTime();
-                    if (avgCompletionTime >= 0)
-                    {
-                        textBlockAvgCompletionTime.Text = $"Среднее время выполнения заявок (часы): {avgCompletionTime}";
-                    }
-                    else
-                    {
-                        textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
-                    }
+                    buttonNavigateToCreateRequestPage.Visibility = Visibility.Collapsed;
                     break;
 
                 case "Исполнитель":
                     textBlockTitle.Text = "Заявки";
-                    buttonCreateRequest.Visibility = Visibility.Collapsed;
-                    textBlockNumOfReadyRequests.Visibility = Visibility.Collapsed;
-                    textBlockAvgCompletionTime.Visibility = Visibility.Collapsed;
+                    buttonNavigateToStatistics.Visibility = Visibility.Collapsed;
+                    buttonNavigateToCreateRequestPage.Visibility = Visibility.Collapsed;
                     break;
             }
             textBlockLogin.Text = currentUser.Login;
@@ -91,24 +78,9 @@ namespace TechnoService.Presentation.Pages
             NavigationService.Navigate(new CreateRequestPage(currentUser.Id));
         }
 
-        private void SetUpNotFoundText()
+        private void NavigateToStatistics(object sender, RoutedEventArgs e)
         {
-            if (requestList.Count > 0)
-            {
-                textBlockNotFound.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                if (textBoxSearch.Text.Length == 0)
-                {
-                    textBlockNotFound.Text = "Заявки отсутствуют";
-                }
-                else
-                {
-                    textBlockNotFound.Text = "Ничего не найдено";
-                }
-                textBlockNotFound.Visibility = Visibility.Visible;
-            }
+            NavigationService.Navigate(new StatisticsPage());
         }
 
         private void GetRequestsBySearchQuery()
@@ -134,6 +106,26 @@ namespace TechnoService.Presentation.Pages
                 requestList.Add(request);
             }
             SetUpNotFoundText();
+        }
+
+        private void SetUpNotFoundText()
+        {
+            if (requestList.Count > 0)
+            {
+                textBlockNotFound.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if (textBoxSearch.Text.Length == 0)
+                {
+                    textBlockNotFound.Text = "Заявки отсутствуют";
+                }
+                else
+                {
+                    textBlockNotFound.Text = "Ничего не найдено";
+                }
+                textBlockNotFound.Visibility = Visibility.Visible;
+            }
         }
 
         private void SearchRequests(object sender, TextChangedEventArgs e)

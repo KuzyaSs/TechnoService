@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\denis\source\repos\TechnoService\TechnoService\obj\Debug\
+C:\Users\denis\source\repos\KuzyaSs\TechnoService\TechnoService\obj\Debug\
 TechnoService
 none
 false
 DEBUG;TRACE
-C:\Users\denis\source\repos\TechnoService\TechnoService\App.xaml
-6-1876251324
+C:\Users\denis\source\repos\KuzyaSs\TechnoService\TechnoService\App.xaml
+7-802466694
 291969249
-201427310361
-18-1453498751
-Presentation\Pages\CreateRequestPage.xaml;Presentation\Pages\RequestDetailPage.xaml;Presentation\Pages\RequestListPage.xaml;Presentation\Pages\SignInPage.xaml;Presentation\Pages\SplashPage.xaml;Presentation\TechnoServiceWindow.xaml;
+221778168603
+18-1842705417
+Presentation\Pages\CreateRequestPage.xaml;Presentation\Pages\RequestDetailPage.xaml;Presentation\Pages\RequestListPage.xaml;Presentation\Pages\SignInPage.xaml;Presentation\Pages\SplashPage.xaml;Presentation\Pages\StatisticsPage.xaml;Presentation\TechnoServiceWindow.xaml;
 
 False
 
