@@ -24,6 +24,7 @@ namespace TechnoService.Presentation.Pages
 
         private void NavigateToSignInPage()
         {
+            // Имитация загрузки.
             Thread.Sleep(2000);
              Application.Current.Dispatcher.Invoke(() =>
             {

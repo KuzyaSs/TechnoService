@@ -16,6 +16,7 @@ namespace TechnoService.Presentation.Pages
         public StatisticsPage()
         {
             InitializeComponent();
+            // Получение репозитория для работы со слоем данных.
             technoServiceRepository = ((App)Application.Current).GetTechnoServiceRepository();
             Loaded += StatisticsPageLoaded;
         }
@@ -29,6 +30,7 @@ namespace TechnoService.Presentation.Pages
 
         private void SetUpUI()
         {
+            // Получение списка типов неисправностей.
             faultTypeStatisticsList = new ObservableCollection<FaultTypeStatistics>();
             dataGridFaultTypeStatistics.ItemsSource = faultTypeStatisticsList;
             var newFaultTypeStatisticsList = technoServiceRepository.GetFaultTypeStatistics();
@@ -38,6 +40,7 @@ namespace TechnoService.Presentation.Pages
             }
             SetUpNotFoundText();
 
+            // Получение количества выполненных заявок и среднего времени их выполнения.
             int numOfReadyRequests = technoServiceRepository.GetNumOfReadyRequests();
             textBlockNumOfReadyRequests.Text = $"Количество выполненных заявок: {numOfReadyRequests}";
             double avgCompletionTime = technoServiceRepository.GetAvgCompletionTime();

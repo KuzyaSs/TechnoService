@@ -32,6 +32,7 @@ namespace TechnoService.Presentation.Pages
 
         private void SetUpUI()
         {
+            // Настройка интерфейса в зависимости от роли пользователя.
             switch(currentUser.Role.Name)
             {
                 case "Клиент":
@@ -85,6 +86,7 @@ namespace TechnoService.Presentation.Pages
 
         private void GetRequestsBySearchQuery()
         {
+            // Получение списка заявок в зависимости от роли пользователя.
             List<Request> newRequestList = new List<Request>();
             requestList.Clear();
             switch (currentUser.Role.Name)

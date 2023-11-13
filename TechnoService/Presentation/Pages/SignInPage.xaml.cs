@@ -31,8 +31,6 @@ namespace TechnoService.Presentation.Pages
             {
                 MessageBox.Show("Заполните поля логина и пароля данными!", "Ошибка ввода данных", MessageBoxButton.OK, MessageBoxImage.Error);
                 textBoxLogin.Focus();
-                // textBoxLogin.BorderBrush = Brushes.Red;
-                // passwordBoxPassword.BorderBrush = Brushes.Red;
                 return;
             }
 
@@ -52,6 +50,7 @@ namespace TechnoService.Presentation.Pages
 
             try
             {
+                // Получение id пользователя.
                 int userId = technoServiceRepository.CheckUserExists(login, password);
                 NavigationService.Navigate(new RequestListPage(userId));
                 textBoxLogin.Clear();

@@ -35,6 +35,7 @@ namespace TechnoService.Presentation.Pages
 
         private void SetUpUI()
         {
+            // Заполнение формы информацией о текущей заявке.
             equipmentList = technoServiceRepository.GetAllEquipment();
             faultTypeList = technoServiceRepository.GetAllFaultTypes();
             statusList = technoServiceRepository.GetAllStatuses();
@@ -65,7 +66,8 @@ namespace TechnoService.Presentation.Pages
             datePickerEndDate.SelectedDate = currentRequest.EndDate;
             textBoxDescription.Text = currentRequest.Description;
             textBoxComment.Text = currentRequest.Comment;
-
+            
+            // Настройка интерфейса в зависимости от роли пользователя.
             switch (currentUser.Role.Name)
             {
                 case "Клиент":
@@ -124,6 +126,7 @@ namespace TechnoService.Presentation.Pages
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            // Получение информации о редактированной заявке из формы.
             int equipmentId = ((Equipment)comboBoxEquipment.SelectedItem).Id;
             int faultTypeId = ((FaultType)comboBoxFaultType.SelectedItem).Id;
             int statusId = ((Status)comboBoxStatus.SelectedItem).Id;
@@ -137,6 +140,7 @@ namespace TechnoService.Presentation.Pages
                 return;
             }
 
+            // Внесение изменений в заявку.
             technoServiceRepository.EditRequest(currentRequest.Id, equipmentId, faultTypeId, statusId, contractorId, description, comment, endDate);
             MessageBox.Show("Изменения успешно сохранены!", "Изменение заявки", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.GoBack();

@@ -30,6 +30,7 @@ namespace TechnoService.Presentation.Pages
 
         private void SetUpUI()
         {
+            // Заполнение формы информацией для создания новой заявки.
             equipmentList = technoServiceRepository.GetAllEquipment();
             faultTypeList = technoServiceRepository.GetAllFaultTypes();
             comboBoxEquipment.ItemsSource = equipmentList;
@@ -49,6 +50,7 @@ namespace TechnoService.Presentation.Pages
 
         private void Send(object sender, RoutedEventArgs e)
         {
+            // Получение информации о настроенной заявке из формы.
             int equipmentId = ((Equipment)comboBoxEquipment.SelectedItem).Id;
             int faultTypeId = ((FaultType)comboBoxFaultType.SelectedItem).Id;
             string description = textBoxDescription.Text;
@@ -60,6 +62,7 @@ namespace TechnoService.Presentation.Pages
                 return;
             }
 
+            // Добавление новой заявки.
             technoServiceRepository.AddRequest(userId, equipmentId, faultTypeId, description);
             MessageBox.Show("Заявка успешно создана!", "Создание заявки", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.GoBack();
