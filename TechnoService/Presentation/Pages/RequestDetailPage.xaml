@@ -184,6 +184,23 @@
                     Grid.Row="1"
                     Name="textBoxComment"
                     Style="{StaticResource TextBoxFill}" />
+
+                <StackPanel
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                        <TextBlock
+                            Name="textBlockQrCode"
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Оцените работу сервиса"
+                            HorizontalAlignment="Center" />
+
+                        <Image
+                            Name="imageQrCode"
+                            Height="180"
+                            Width="180"
+                            Source="/Resources/QR-code.gif" />
+                </StackPanel>
             </Grid>
         </Grid>
 

@@ -80,10 +80,18 @@ namespace TechnoService.Presentation.Pages
                     textBoxComment.Visibility = Visibility.Collapsed;
                     textBlockClient.Visibility = Visibility.Collapsed;
                     buttonSave.Visibility = Visibility.Collapsed;
+
+                    if (currentRequest.Status.Name != "Выполнено")
+                    {
+                        textBlockQrCode.Visibility = Visibility.Collapsed;
+                        imageQrCode.Visibility = Visibility.Collapsed;
+                    }
                     break;
 
                 case "Менеджер":
                     textBoxComment.IsEnabled = false;
+                    textBlockQrCode.Visibility = Visibility.Collapsed;
+                    imageQrCode.Visibility = Visibility.Collapsed;
                     break;
 
                 case "Исполнитель":
@@ -93,6 +101,8 @@ namespace TechnoService.Presentation.Pages
                     datePickerEndDate.IsEnabled = false;
                     textBlockContractor.Visibility = Visibility.Collapsed;
                     comboBoxContractor.Visibility = Visibility.Collapsed;
+                    textBlockQrCode.Visibility = Visibility.Collapsed;
+                    imageQrCode.Visibility = Visibility.Collapsed;
                     break;
             }
         }

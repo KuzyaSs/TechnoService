@@ -169,9 +169,8 @@ namespace TechnoService.Data
             }
             else
             {
-                request.EndDate = null;
+                request.EndDate = endDate;
             }
-            request.EndDate = endDate;
             technoServiceEntities.SaveChanges();
         }
 
