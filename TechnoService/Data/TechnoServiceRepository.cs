@@ -147,7 +147,7 @@ namespace TechnoService.Data
             technoServiceEntities.SaveChanges();
         }
 
-        public void EditRequest(int requestId, int equipmentId, int faultTypeId, int statusId, int contractorId, string description, string comment)
+        public void EditRequest(int requestId, int equipmentId, int faultTypeId, int statusId, int contractorId, string description, string comment, DateTime? endDate)
         {
             Request request = technoServiceEntities.Requests.FirstOrDefault(_request => _request.Id == requestId);
             request.EquipmentId = equipmentId;
@@ -171,6 +171,7 @@ namespace TechnoService.Data
             {
                 request.EndDate = null;
             }
+            request.EndDate = endDate;
             technoServiceEntities.SaveChanges();
         }
 

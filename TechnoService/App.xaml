@@ -59,6 +59,14 @@
 
 
 
+        <Style TargetType="DatePicker" x:Key="DatePickerDefault">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        
+
         <Style TargetType="DataGridColumnHeader" x:Key="DataGridColumnHeaderDefault">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using TechnoService.Data;
@@ -45,6 +46,7 @@ namespace TechnoService.Presentation.Pages
             comboBoxFaultType.ItemsSource = faultTypeList;
             comboBoxStatus.ItemsSource = statusList;
             comboBoxContractor.ItemsSource = contractorList;
+
             comboBoxEquipment.SelectedItem = currentRequest.Equipment;
             comboBoxFaultType.SelectedItem = currentRequest.FaultType;
             comboBoxStatus.SelectedItem = currentRequest.Status;
@@ -55,12 +57,12 @@ namespace TechnoService.Presentation.Pages
             else
             {
                 comboBoxContractor.SelectedIndex = contractorList.Count - 1;
-
             }
 
             textBlockTitle.Text = $"Заявка #{currentRequest.Id}";
             textBlockClient.Text = $"Клиент: {currentRequest.User.Login} (+{currentRequest.User.PhoneNumber})";
             textBlockPublicationDate.Text = $"Дата добавления: {currentRequest.PublicationDate}";
+            datePickerEndDate.SelectedDate = currentRequest.EndDate;
             textBoxDescription.Text = currentRequest.Description;
             textBoxComment.Text = currentRequest.Comment;
 
@@ -70,6 +72,7 @@ namespace TechnoService.Presentation.Pages
                     comboBoxEquipment.IsEnabled = false;
                     comboBoxFaultType.IsEnabled = false;
                     comboBoxStatus.IsEnabled = false;
+                    datePickerEndDate.IsEnabled = false;
                     textBoxDescription.IsEnabled = false;
                     textBlockContractor.Visibility = Visibility.Collapsed;
                     comboBoxContractor.Visibility = Visibility.Collapsed;
@@ -87,6 +90,7 @@ namespace TechnoService.Presentation.Pages
                     comboBoxEquipment.IsEnabled = false;
                     comboBoxFaultType.IsEnabled = false;
                     textBoxDescription.IsEnabled = false;
+                    datePickerEndDate.IsEnabled = false;
                     textBlockContractor.Visibility = Visibility.Collapsed;
                     comboBoxContractor.Visibility = Visibility.Collapsed;
                     break;
@@ -116,8 +120,14 @@ namespace TechnoService.Presentation.Pages
             int contractorId = ((User)comboBoxContractor.SelectedItem).Id;
             string description = textBoxDescription.Text;
             string comment = textBoxComment.Text;
+            DateTime? endDate = datePickerEndDate.SelectedDate;
+            if (endDate < DateTime.Now)
+            {
+                MessageBoxResult result = MessageBox.Show($"Срок сдачи не может быть до {DateTime.Now}", "Некорректный срок сдачи", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-            technoServiceRepository.EditRequest(currentRequest.Id, equipmentId, faultTypeId, statusId, contractorId, description, comment);
+            technoServiceRepository.EditRequest(currentRequest.Id, equipmentId, faultTypeId, statusId, contractorId, description, comment, endDate);
             MessageBox.Show("Изменения успешно сохранены!", "Изменение заявки", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.GoBack();
         }

@@ -72,14 +72,15 @@
         <Grid
             Grid.Row="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <StackPanel
                 Grid.Column="0"
                 HorizontalAlignment="Left"
-                Margin="0 0 8 0">
+                Margin="0 0 32 0">
                 <TextBlock
                     Style="{StaticResource TextBlockDefault}"
                     Text="Статус"
@@ -97,10 +98,11 @@
                 </ComboBox>
             </StackPanel>
 
+            
             <StackPanel
                 Grid.Column="1"
                 HorizontalAlignment="Left"
-                Margin="8 0 0 0" >
+                Margin="0 0 32 0" >
                 <TextBlock
                     Name="textBlockContractor"
                     Style="{StaticResource TextBlockDefault}"
@@ -117,6 +119,21 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Margin="0 0 0 0">
+                <TextBlock
+                    Name="textBlockEndDate"
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="Срок сдачи"
+                    Margin="0 0 0 8" />
+
+                <DatePicker
+                    Name="datePickerEndDate"
+                    Style="{StaticResource DatePickerDefault}" />
             </StackPanel>
         </Grid>
 

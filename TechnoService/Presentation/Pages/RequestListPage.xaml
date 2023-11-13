@@ -147,14 +147,14 @@
                 Style="{StaticResource ButtonDefault}"
                 Content="Статистика"
                 Click="NavigateToStatistics"
-                Margin="0 16 16 0" />
+                Margin="0 16 0 0" />
 
             <Button
                 Name="buttonNavigateToCreateRequestPage"
                 Style="{StaticResource ButtonDefault}"
                 Content="Создать заявку"
                 Click="NavigateToCreateRequestPage"
-                Margin="0 16 0 0" />
+                Margin="16 16 0 0" />
         </StackPanel>
     </Grid>
 </Page>
